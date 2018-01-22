@@ -7,11 +7,11 @@ class Conta
   public $limite; //atributo
 }
 
-$x = new Conta();
-$x->numero = 123;
-$x->saldo = 1000;
-$x->limite = 10000;
+$conta = new Conta();
+$conta->numero = 123;
+$conta->saldo = 1000;
+$conta->limite = 10000;
 
-echo "Número: $x->numero" . PHP_EOL;
-echo "Saldo: $x->saldo" . PHP_EOL;
-echo "Limite: $x->limite" . PHP_EOL;
+echo "Número: $conta->numero" . PHP_EOL;
+echo "Saldo: $conta->saldo" . PHP_EOL;
+echo "Limite: $conta->limite" . PHP_EOL;
