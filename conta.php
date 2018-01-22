@@ -4,18 +4,14 @@ class Conta
 {
   public $numero; //atributo
   public $saldo; //atributo
+  public $limite; //atributo
 }
 
 $x = new Conta();
 $x->numero = 123;
 $x->saldo = 1000;
+$x->limite = 10000;
 
-echo "Número X: $x->numero" . PHP_EOL;
-echo "Saldo X: $x->saldo" . PHP_EOL;
-
-$y = new Conta();
-$y->numero = 555;
-$y->saldo = 60000;
-
-echo "Número Y: $y->numero" . PHP_EOL;
-echo "Saldo Y: $y->saldo" . PHP_EOL;
+echo "Número: $x->numero" . PHP_EOL;
+echo "Saldo: $x->saldo" . PHP_EOL;
+echo "Limite: $x->limite" . PHP_EOL;
