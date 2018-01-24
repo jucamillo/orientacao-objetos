@@ -19,26 +19,31 @@
 
       $conexao = new mysqli($servidor, $usuario, $senha, $banco) or die("Erro de conexao: $conexao->connect_error");
 
-      $sql = "INSERT INTO clientes VALUES
-              (null, '$cliente->nome', '$cliente->email')";
+      $sql = "INSERT INTO clientes (nome, email) VALUES
+              (?, ?)";
 
-      $saida = $conexao->query($sql);
+      $comando = $conexao->prepare($sql);
+
+      $comando->bind_param("ss", $cliente->nome, $cliente->email);
+
+      $saida = $comando->execute();
 ?>
 
   <h1>Cliente</h1>
 
-  <?php if($saida === true){?>
-      <h3>Cliente: <em><?= $cliente->nome ?></em>, email: <em><?= $cliente->email ?></em> salvo com sucesso</h3>
+      <?php if($saida === true){?>
+          <h3>Cliente: <em><?= $cliente->nome ?></em>, email: <em><?= $cliente->email ?></em> salvo com sucesso</h3>
 
-  <?php } else { ?>
+      <?php } else { ?>
 
-      <h3>erro: <?= $conexao->error ?> </h3>
+          <h3>Erro: <?= $conexao->error ?> </h3>
+          <h3>Sql: <?= $sql ?> </h3>
 
-    <?php };
+        <?php }
+          $comando->close();
+          $conexao->close();
 
-      $conexao->close();
-
-      ?>
+          ?>
 
 
 
